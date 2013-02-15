@@ -1,0 +1,6 @@
+aoslib.calctd
+=============
+
+.. currentmodule:: aoslib
+
+.. autofunction:: calctd
