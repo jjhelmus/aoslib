@@ -82,6 +82,7 @@ python module _awips ! in
             integer intent(hide), depend(p) :: nj=shape(p,1)
             real dimension(mni,nj), intent(out) :: q
         end subroutine mixrat
+        
         subroutine alt2press(alt,z,mni,ni,nj,p) ! in :_aoslib:alt2press.f
             real dimension(mni,nj), intent(in) :: alt
             real dimension(mni,nj), intent(in) :: z
@@ -90,12 +91,14 @@ python module _awips ! in
             integer intent(hide), depend(alt) :: nj=shape(alt,1)
             real dimension(mni,nj),intent(out),depend(mni,nj) :: p
         end subroutine alt2press
+        
         function dmixr(temp,pres,iw) ! in :_aoslib:dmixr.f
             real intent(in) :: temp
             real intent(in) :: pres
             integer intent(in) :: iw
             real intent(out) :: dmixr
         end function dmixr
+        
         subroutine mslp2thkns(mslp,hgt,thkns,mni,ni,nj) ! in mslp2thkns.f
             real*4 dimension(mni,nj), intent(in) :: mslp
             real*4 dimension(mni,nj), intent(in) :: hgt
@@ -104,6 +107,7 @@ python module _awips ! in
             integer optional, check(ni<=shape(mslp,0)) :: ni=shape(mslp,0)
             integer intent(hide), depend(mslp) :: nj=shape(mslp,1)
         end subroutine mslp2thkns
+        
         subroutine spechum2(p,td,mni,ni,nj,q) ! in spechum2.f
             real dimension(mni,nj), intent(in) :: p
             real dimension(mni,nj), intent(in) :: td
@@ -112,6 +116,7 @@ python module _awips ! in
             integer intent(hide), depend(p) :: nj=shape(p,1)
             real dimension(mni,nj), intent(out) :: q
         end subroutine spechum2
+        
         subroutine avwind(elev,top,bot,hw,pw,tw,uw,vw,nw,uavg,vavg,avdir,avspd) ! in :_aoslib:avwind.f
             real :: elev
             real :: top
@@ -127,6 +132,7 @@ python module _awips ! in
             real :: avdir
             real :: avspd
         end subroutine avwind
+        
         subroutine dotvectors(ax,ay,bx,by,result,mni,ni,nj) ! in :_aoslib:dotvectors.f
             real dimension(mni,nj) :: ax
             real dimension(mni,nj),depend(mni,nj) :: ay
@@ -137,6 +143,7 @@ python module _awips ! in
             integer :: ni
             integer, optional,check(shape(ax,1)==nj),depend(ax) :: nj=shape(ax,1)
         end subroutine dotvectors
+        
         subroutine mult_aray(a,b,result,mni,ni,nj) ! in :_aoslib:multaray.f
             real dimension(mni,nj) :: a
             real dimension(mni,nj),depend(mni,nj) :: b
@@ -145,6 +152,7 @@ python module _awips ! in
             integer :: ni
             integer, optional,check(shape(a,1)==nj),depend(a) :: nj=shape(a,1)
         end subroutine mult_aray
+        
         subroutine spechum(p,t,rh,mni,ni,nj,q) ! in spechum.f
             real dimension(mni,nj), intent(in) :: p
             real dimension(mni,nj), intent(in) :: t
@@ -154,6 +162,7 @@ python module _awips ! in
             integer intent(hide), depend(t) :: nj=shape(t,1)
             real dimension(mni,nj), intent(out) :: q
         end subroutine spechum
+        
         subroutine richno(ht,hw,uw,vw,rho,nlvls,nw,buoy,richnum) ! in :_aoslib:BulkRichNo.f
             real dimension(nlvls) :: ht
             real dimension(nw) :: hw
@@ -165,12 +174,14 @@ python module _awips ! in
             real :: buoy
             real :: richnum
         end subroutine richno
+        
         function dzdlnp(p,t,td) ! in :_aoslib:dzdlnp.f
             real*4 intent(in) :: p
             real*4 intent(in) :: t
             real*4 intent(in) :: td
             real*4 intent(out) :: dzdlnp
         end function dzdlnp
+        
         subroutine mult_by_cnst(a,const_bn,result,mni,ni,nj) ! in :_aoslib:multbycnst.f
             real dimension(mni,nj) :: a
             real :: const_bn
@@ -179,6 +190,7 @@ python module _awips ! in
             integer :: ni
             integer, optional,check(shape(a,1)==nj),depend(a) :: nj=shape(a,1)
         end subroutine mult_by_cnst
+        
         subroutine sub_aray(a,b,result,mni,ni,nj) ! in :_aoslib:subaray.f
             real dimension(mni,nj) :: a
             real dimension(mni,nj),depend(mni,nj) :: b
@@ -187,6 +199,7 @@ python module _awips ! in
             integer :: ni
             integer, optional,check(shape(a,1)==nj),depend(a) :: nj=shape(a,1)
         end subroutine sub_aray
+        
         subroutine calccondprdef(p,t,rh,mni,ni,nj,q) ! in :_aoslib:calccondprdef.f
             real dimension(mni,nj), intent(in) :: p
             real dimension(mni,nj), intent(in) :: t
@@ -196,6 +209,7 @@ python module _awips ! in
             integer, intent(hide), depend(p) ::  nj=shape(p,1)
             real dimension(mni,nj), intent(out), depend(mni,nj) :: q
         end subroutine calccondprdef
+        
         subroutine eqlev(p,ht,tp,te,plfc,eptpar,npar,peqlev,heqlev,teqlev) ! in :_aoslib:eqlev.f
             real dimension(npar) :: p
             real dimension(npar),depend(npar) :: ht
@@ -208,18 +222,22 @@ python module _awips ! in
             real :: heqlev
             real :: teqlev
         end subroutine eqlev
+        
         function radnorm(jd) ! in sunfuncs.f
             integer intent(in) :: jd
             real intent(out) :: radnorm
         end function radnorm
+        
         function soldec(jd) ! in sunfuncs.f
             integer intent(in) :: jd
             real intent(out) :: soldec
         end function soldec
+        
         function timeq(jd) ! in sunfuncs.f
             integer intent(in) :: jd
             real intent(out) :: timeq
         end function timeq
+        
         subroutine calccondpr(p,t,rh,mni,ni,nj,q) ! in calccondpr.f
             real dimension(mni,nj), intent(in) :: p
             real dimension(mni,nj), intent(in) :: t
@@ -229,6 +247,7 @@ python module _awips ! in
             integer, intent(hide), depend(p) ::  nj=shape(p,1)
             real dimension(mni,nj), intent(out), depend(mni,nj) :: q
         end subroutine calccondpr
+        
         subroutine eqp(deltap,p,ht,t,td,n,pp,htt,tt,ttd,nn) ! in :_aoslib:eqp.f
             real :: deltap
             real dimension(1) :: p
@@ -242,6 +261,7 @@ python module _awips ! in
             real dimension(1) :: ttd
             integer :: nn
         end subroutine eqp
+        
         subroutine nadgdt(u,v,a,mni,ni,nj,dx,dy,dadxdt,dadydt) ! in nadgdt.f
             real dimension(mni,nj), :: u
             real dimension(mni,nj),depend(mni,nj) :: v
